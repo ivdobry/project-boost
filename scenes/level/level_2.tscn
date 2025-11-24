@@ -1,23 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://wh1lp4bwxup2"]
+[gd_scene load_steps=7 format=3 uid="uid://wh1lp4bwxup2"]
 
 [ext_resource type="Script" uid="uid://bgh8u5yt3jbv4" path="res://scenes/level/landing_pad.gd" id="1_u7l0e"]
 [ext_resource type="PackedScene" uid="uid://7toqpd4u4j18" path="res://scenes/player/player.tscn" id="2_2g46k"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8y3pp"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_h3e3j"]
-sky_material = SubResource("ProceduralSkyMaterial_8y3pp")
-
-[sub_resource type="Environment" id="Environment_nbgty"]
-background_mode = 2
-sky = SubResource("Sky_h3e3j")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8y3pp"]
-albedo_color = Color(0.28783932, 0.17717311, 0.043309294, 1)
+[ext_resource type="PackedScene" uid="uid://biju4t8annxox" path="res://scenes/level/background.tscn" id="3_2g46k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7l0e"]
 albedo_color = Color(0.8461726, 0.4849974, 0.7239821, 1)
@@ -29,19 +14,6 @@ albedo_color = Color(0.07080033, 0.48068637, 0.7264092, 1)
 albedo_color = Color(0, 1, 0, 1)
 
 [node name="Level" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_nbgty")
-
-[node name="Floor" type="CSGBox3D" parent="." groups=["Hazard"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009307694, -3.9999998, -0.00044822693)
-use_collision = true
-size = Vector3(30, 8, 5)
-material = SubResource("StandardMaterial3D_8y3pp")
 
 [node name="Obstacle" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009307694, 2.034655, -0.00044822693)
@@ -68,3 +40,6 @@ transform = Transform3D(1, 0, 0, 0, 0.9799769, 0.19911139, 0, -0.19911139, 0.979
 
 [node name="Player" parent="." instance=ExtResource("2_2g46k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.4, 0)
+
+[node name="Floor" parent="." instance=ExtResource("3_2g46k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
