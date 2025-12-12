@@ -16,7 +16,7 @@ var _is_transitioning: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("boost"):
+	if Input.is_action_pressed("boost") || Input.is_action_pressed("ui_up"):
 		apply_central_force(basis.y * delta * thrust) 
 		booster_particles.emitting = true
 		if rocket_audio.playing == false:
@@ -25,13 +25,13 @@ func _process(delta: float) -> void:
 		booster_particles.emitting = false
 		rocket_audio.stop()
 		
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") || Input.is_action_pressed("ui_left"):
 		apply_torque(Vector3(0.0, 0.0 , rotation_speed * delta))
 		right_booster_particles.emitting = true
 	else:
 		right_booster_particles.emitting = false
 		
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") || Input.is_action_pressed("ui_right"):
 		left_booster_particles.emitting = true
 		apply_torque(Vector3(0.0, 0.0 , -rotation_speed * delta))
 	else:

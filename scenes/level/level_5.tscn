@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cw3d0b2jah22y"]
+[gd_scene load_steps=7 format=3 uid="uid://b86xb372er5nr"]
 
-[ext_resource type="Script" uid="uid://bgh8u5yt3jbv4" path="res://scenes/level/landing_pad.gd" id="1_wmkn8"]
-[ext_resource type="PackedScene" uid="uid://7toqpd4u4j18" path="res://scenes/player/player.tscn" id="2_qbgbt"]
-[ext_resource type="PackedScene" uid="uid://bpdc5k07o3q1m" path="res://scenes/hazards/moving_hazzard.tscn" id="3_qbgbt"]
-[ext_resource type="PackedScene" uid="uid://biju4t8annxox" path="res://scenes/level/background.tscn" id="4_av8io"]
+[ext_resource type="Script" uid="uid://bgh8u5yt3jbv4" path="res://scenes/level/landing_pad.gd" id="1_05m2i"]
+[ext_resource type="PackedScene" uid="uid://7toqpd4u4j18" path="res://scenes/player/player.tscn" id="2_0iva6"]
+[ext_resource type="PackedScene" uid="uid://biju4t8annxox" path="res://scenes/level/background.tscn" id="4_4kvp3"]
+[ext_resource type="PackedScene" uid="uid://cc4jvrt3jipt8" path="res://scenes/squid/saquid.tscn" id="4_05m2i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3e3j"]
 albedo_color = Color(0.07080033, 0.48068637, 0.7264092, 1)
@@ -24,19 +24,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.2, 0)
 use_collision = true
 size = Vector3(2, 0.4, 2)
 material = SubResource("StandardMaterial3D_nbgty")
-script = ExtResource("1_wmkn8")
-file_path = "uid://b86xb372er5nr"
+script = ExtResource("1_05m2i")
+file_path = "uid://cv7a0tkq8d5us"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9799769, 0.19911139, 0, -0.19911139, 0.9799769, 0, 4, 7.32)
 
-[node name="Player" parent="." instance=ExtResource("2_qbgbt")]
+[node name="Player" parent="." instance=ExtResource("2_0iva6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.4, 0)
 
-[node name="MovingHazzard" parent="." instance=ExtResource("3_qbgbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.201985, 0)
-destination = Vector3(0, 2, 0)
-duration = 3.0
-
-[node name="Floor" parent="." instance=ExtResource("4_av8io")]
+[node name="Floor" parent="." instance=ExtResource("4_4kvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="Squid" parent="." instance=ExtResource("4_05m2i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4632493, 2.7967706, 0)
+destination = Vector3(18, 0, 0)
